@@ -4,29 +4,6 @@ from pyreadstat import pyreadstat
 import matplotlib.pyplot as plt
 
 
-#绘图设置
-plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
-
-#读取spss格式数据
-
-def 绘制单个类别变量柱状图(数据表,变量:str):
-    
-    # 生成x、y轴方向的坐标
- x = 数据表['变量'].value_counts().index
- y = 数据表['变量'].value_counts(normalize=True).values * 100
-# 创建图
-fig, ax = plt.subplots()
-# 绘制柱状图
-rects1 = ax.bar(x, y)
-# 设置x轴变量名称
-ax.set_xlabel(ymax=100)
-# 设置y轴最大值
-ax.set_ylim(ymax=100)
-# 在柱上方显示对应的值
-ax.bar_label(rects1, fmt="%.1f", padding=3)
-# 显示图形
-plt.show()
-
 
 def 绘制饼图(数据表, 变量):
  # 定义数据  
@@ -39,6 +16,29 @@ def 绘制饼图(数据表, 变量):
 # 显示图形  
   plt.show()
 
+
+#绘图设置
+plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
+
+#读取spss格式数据
+
+def 绘制单个类别变量柱状图(数据表,变量:str):
+    
+    # 生成x、y轴方向的坐标
+  x = 数据表['变量'].value_counts().index
+  y = 数据表['变量'].value_counts(normalize=True).values * 100
+# 创建图
+  fig, ax = plt.subplots()
+# 绘制柱状图
+  rects1 = ax.bar(x, y)
+# 设置x轴变量名称
+  ax.set_xlabel(ymax=100)
+# 设置y轴最大值
+  ax.set_ylim(ymax=100)
+# 在柱上方显示对应的值
+  ax.bar_label(rects1, fmt="%.1f", padding=3)
+# 显示图形
+plt.show()
 
 
 
@@ -114,3 +114,7 @@ def 相关系数强弱判断(相关系数值):
 
 def 制作交叉表(数据表, 自变量, 因变量):
     return pd.crosstab(数据表[自变量], 数据表[因变量], normalize='columns', margins=True)
+
+
+
+
