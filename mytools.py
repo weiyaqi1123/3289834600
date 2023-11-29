@@ -119,7 +119,7 @@ import pandas as pd
 from scipy import stats
 
 def 单变量均值函数的区间估计(file_path,confidence_level):
-    file_path ="文件所在位置及名称"
+    file_path =R"data/movie_data_cleaned.csv"
     df_movies = pd.read_csv(file_path)
     # 计算均值和标准误差
     mean = df_movies['average'].mean()
