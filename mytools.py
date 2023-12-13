@@ -45,10 +45,6 @@ plt.show()
 
 
 
-
-
-
-
 def 读取spss数据文件(文件所在位置及名称):
     result,metadata = pyreadstat.read_sav(
         文件所在位置及名称, apply_value_formats=True,
