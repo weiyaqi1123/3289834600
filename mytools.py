@@ -43,6 +43,10 @@ def 绘制单个类别变量柱状图(数据表,变量:str):
 # 显示图形
 plt.show()
 
+def 读取SPSS数据文件(文件位置及名称, 是否保留标签值=True):
+        数据表, metadata = pyreadstat.read_sav(
+        文件位置及名称, apply_value_formats=是否保留标签值, formats_as_ordered_category=True)
+        return 数据表
 
 
 def 读取spss数据文件(文件所在位置及名称):
@@ -135,11 +139,7 @@ def 单变量均值函数的区间估计(file_path,confidence_level):
     print(F"均值在置信水平{confidence_level}下的置信区间为：", confidence_interval)
 
 
-    def 读取SPSS数据文件(文件位置及名称, 是否保留标签值=True):
-        数据表, metadata = pyreadstat.read_sav(
-        文件位置及名称, apply_value_formats=是否保留标签值, formats_as_ordered_category=True)
-        return 数据表
-
+    
 
 def p值判断(p: float, α=0.05):
     """ p值判断 """
