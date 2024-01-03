@@ -20,8 +20,24 @@ def 绘制饼图(数据表, 变量):
   plt.show()
 
 
+def 使用plotly绘制类别变量柱状图(数据表, 类别变量):
+    temp = 数据表[类别变量].value_counts().reset_index()
+    fig = px.bar(temp, x=类别变量, y='count', labels={'count': '数量'})
+    # 显示图表
+    fig.show()
+
+
 #绘图设置
 plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
+
+def 使用均值和标准差检测数值变量异常值(数据表,数值变量):
+    mean = 数据表[数值变量].mean()
+    std = 数据表[数值变量].std()
+    condition1 = (数据表[数值变量] < mean - 3 * std) | (数据表[数值变量] > mean + 3 * std)
+    # 识别异常值
+    outliers1 = 数据表[condition1]
+    print('使用标准差判断的异常值为：',outliers1)
+
 
 #读取spss格式数据
 
@@ -253,13 +269,14 @@ def 两个数值变量的统计分析(数据表, 自变量, 因变量):
     y = 数据表[因变量]
     r, p = stats.pearsonr(x, y)
 
-    fig = px.scatter(数据表, x="22、对于新事物，我喜欢去尝试和体验", y="总分", trendline='ols')
+    fig = px.scatter(数据表, x, y, trendline='ols')
     fig.show()
 
     print(FR"决定系数r平方：{r*r :0.4f}")
     print(决定系数强弱判断(r*r))
     print(F"p值：{p: .4f}")
     print(p值判断(p))
+
 
 
 def 决定系数强弱判断(决定系数: float):
